@@ -1,8 +1,6 @@
 import * as Phaser from "phaser";
 import PlayScene from "./scenes/PlayScene";
 
-console.log('test');
-
 const WIDTH = 800;
 const HEIGHT = 600;
 const GRAVITY = 600;
