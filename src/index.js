@@ -1,6 +1,9 @@
 import * as Phaser from "phaser";
 import PlayScene from "./scenes/PlayScene";
-
+import MenuScene from "./scenes/MenuScene";
+import PreloadScene from "./scenes/PreloadScene";
+import ScoreScene from "./scenes/ScoreScene";
+import PauseScene from "./scenes/PauseScene";
 
 const WIDTH = 800;
 const HEIGHT = 600;
@@ -22,15 +25,26 @@ const SHARED_CONFIG = {
     pipeHorizontalDistanceRange: PIPE_HORIZONTAL_DISTANCE_RANCE
 }
 
+const SCENES = [
+    PreloadScene,
+    MenuScene,
+    ScoreScene,
+    PlayScene,
+    PauseScene
+];
+
+const initScenes = () => SCENES.map((scene) => new scene(SHARED_CONFIG));
+
 
 new Phaser.Game({
     type: Phaser.AUTO,
     ...SHARED_CONFIG,
+    pixelArt: true,
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            // debug: true,
         }
     },
-    scene: [ new PlayScene(SHARED_CONFIG) ]
+    scene: initScenes()
 });
